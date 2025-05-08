@@ -1,0 +1,44 @@
+---
+title: "Exercise 16"
+author: "Marc Dotson"
+format: docx
+---
+
+1. Read the case and write how you might meet the expectations (no more than one page) in Quarto.
+2. In the same Quarto document, write a function for simulating data that uses conditional statements and a for loop. Call it and print the output.
+3. Render the Quarto document into Word and upload to Canvas.
+
+**Five points total, one point each for:**
+
+- **Write how you might meet the expectations of the case.**
+- **Write a function for simulating data.**
+- **Including conditional statements in your function.**
+- **Including a for loop in your function.**
+- **Submitting a rendered Word document.**
+
+## Meeting Expectations
+
+We will need an accurate supervised model to identify customers that are likely to churn, one or more unsupervised models to segment customers, and a series of natural language processing techniques to look at sentiment and identify topics of customer discussion.
+
+## Write a Function
+
+```{r}
+sim_data <- function(nobs = 500) {
+  # Create an empty vector for data.
+  data <- vector(mode = "double", length = nobs)
+  for (n in seq_along(data)) {
+    if (n < nobs/2) {
+      data[n] <- runif(n = 1, min = 10, max = 50)
+    } else {
+      data[n] <- runif(n = 1, min = 50, max = 100)
+    }
+  }
+
+  # Return simulated data.
+  return(data)
+}
+
+# Call sim_data.
+sim_data(nobs = 10)
+```
+
