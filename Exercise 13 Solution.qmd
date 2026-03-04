@@ -1,0 +1,38 @@
+---
+title: "Exercise 13"
+author: "Cameron Bale"
+format: docx
+---
+
+1. Write a function for simulating data that uses conditional statements and a for loop. Call it and print the output.
+2. Render the Quarto document into Word and upload to Canvas.
+
+**Five points total, one point each for:**
+
+- **Write a function for simulating data.**
+- **Including conditional statements in your function.**
+- **Including a for loop in your function.**
+
+**Two points for submitting a rendered Word document.**
+
+## Write a Function
+
+```{r}
+sim_data <- function(nobs = 500) {
+  # Create an empty vector for data.
+  data <- vector(mode = "double", length = nobs)
+  for (n in seq_along(data)) {
+    if (n < nobs/2) {
+      data[n] <- runif(n = 1, min = 10, max = 50)
+    } else {
+      data[n] <- runif(n = 1, min = 50, max = 100)
+    }
+  }
+
+  # Return simulated data.
+  return(data)
+}
+
+# Call sim_data.
+sim_data(nobs = 10)
+```

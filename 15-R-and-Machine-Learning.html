@@ -20,7 +20,7 @@
       // Slide settings
       settings: {
                 title: 'R and Machine Learning',
-                        subtitle: 'MKTG 411 Marketing Analytics',
+                        subtitle: 'MCB Consulting Group (MKTG 411)',
                 useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -3117,8 +3117,9 @@ span.underline{text-decoration: underline;}
 div.column{display: inline-block; vertical-align: top; width: 50%;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -3129,7 +3130,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -3258,7 +3259,7 @@ background-size: 100% 100%;
 
 </article></slide><slide class=""><hgroup><h2>So How Do We Manage Uncertainty?</h2></hgroup><article  id="so-how-do-we-manage-uncertainty-1">
 
-<p>&ldquo;Please know this: if everything and everyone else in the world whom you shold trust should fail, Jesus Christ and His Church will <em>never</em> fail you. The Lord never slumbers, nor does He sleep. He &lsquo;is the same yesterday, today, and [tomorrow].&rsquo; He will not forsake His covenants, His promises, or His love for His people. He works miracles today, and He will work miracles tomorrow.&rdquo;</p>
+<p>&ldquo;Please know this: if everything and everyone else in the world whom you should trust should fail, Jesus Christ and His Church will <em>never</em> fail you. The Lord never slumbers, nor does He sleep. He &lsquo;is the same yesterday, today, and [tomorrow].&rsquo; He will not forsake His covenants, His promises, or His love for His people. He works miracles today, and He will work miracles tomorrow.&rdquo;</p>
 
 <p>President Russell M. Nelson, April 2021 General Conference.</p>
 
@@ -3286,7 +3287,7 @@ background-size: 100% 100%;
 <li>We use predictive models to accurately predict an outcome or cluster observations.</li>
 </ul>
 
-<p>While we can use inferential models to predict, predictive models are black boxes that <em>cannot</em> be used to understand the unobserved data generating process.</p>
+<p>While we can use inferential models to predict, predictive models are (often) black boxes that do not estimate coefficients that give us information about our story.</p>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
@@ -3294,7 +3295,7 @@ background-size: 100% 100%;
 
 <ul>
 <li><em>Regression</em> where the outcome is continuous often uses linear regression.</li>
-<li><em>Classification</em> where the outcome is binary often uses logistic &ldquo;regression.&rdquo;</li>
+<li><em>Classification</em> where the outcome is binary often uses logistic regression.</li>
 </ul>
 
 <p>Both are examples of <strong>supervised learning</strong>, where there is an outcome variable to predict. We’ll also explore <strong>unsupervised learning</strong>, where we group together predictors (a.k.a., explanatory variables) without an outcome.</p>
@@ -3364,21 +3365,46 @@ empty_vector</pre>
 <p>Sometimes you want code to run only when certain conditions are met. To do this, use <strong>conditional statements</strong>. Note that these are a separate idea from for loops, but a for loop can be a great place to use them!</p>
 
 <pre class = 'prettyprint lang-r'>empty_vector &lt;- vector(mode = &quot;double&quot;, length = 7)
+
 for (i in seq_along(empty_vector)) {
   if (i == 1) {
     empty_vector[i] &lt;- 1
   } else {
-    empty_vector[i] &lt;- 1 + empty_vector[i - 1]
+    empty_vector[i] &lt;- sum(empty_vector[1:(i - 1)])
   }
 }
 
 empty_vector</pre>
 
-<pre >## [1] 1 2 3 4 5 6 7</pre>
+<pre >## [1]  1  1  2  4  8 16 32</pre>
+
+</article></slide><slide class=""><hgroup><h2>Your Turn!</h2></hgroup><article  id="your-turn">
+
+<p>Write a for-loop that fills in a vector of 10 values. Place a zero at every even index, and place the value of every odd index at its corresponding position in the vector.</p>
+
+<p>Hint: use the modulo <code>%%</code> to determine when an index is even. The modulo returns the remainder from dividing the number on its left by the number on its right.</p>
+
+</article></slide><slide class=""><hgroup><h2>Desired Output</h2></hgroup><article  id="desired-output">
+
+<pre >##  [1] 1 0 3 0 5 0 7 0 9 0</pre>
+
+</article></slide><slide class=""><hgroup><h2>Solution</h2></hgroup><article  id="solution">
+
+<pre class = 'prettyprint lang-r'>empty_vector &lt;- vector(mode = &quot;double&quot;, length = 10)
+
+for (i in seq_along(empty_vector)) {
+  if (i %% 2 == 0) {
+    empty_vector[i] &lt;- 0
+  } else {
+    empty_vector[i] &lt;- i
+  }
+}
+
+empty_vector</pre>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
-<p>We can can condition on many possible values.</p>
+<p>Note that we can can condition on many possible values.</p>
 
 <pre class = 'prettyprint lang-r'>empty_vector &lt;- vector(mode = &quot;double&quot;, length = 7)
 for (i in seq_along(empty_vector)) {
@@ -3421,18 +3447,9 @@ multiply_xy(2)</pre>
 <li>Remember to use <code>return()</code> to get back a specific output or object.</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>FAQ </h2><h3> How do I study for a class like this?</h3></hgroup><article  id="faq-how-do-i-study-for-a-class-like-this">
+</article></slide><slide class=""><hgroup><h2>Live Coding</h2></hgroup><article  id="live-coding">
 
-<ol>
-<li>Seek learning by study and faith (D&amp;C 109:7).</li>
-<li>Prepare for class by previewing material and coming with questions.</li>
-<li>Actively code, take notes, and ask questions during class.</li>
-<li>Practice coding by completing exercises, referencing supplementary material as needed.</li>
-<li>Review exercise solutions and note where and why your work differs.</li>
-<li>Use the quizzes to gauge how well the material is understood.</li>
-<li>Work with classmates and utilize office hours.</li>
-<li>Download and organize all course materials, notes, and code.</li>
-</ol>
+<p>Write a function that takes a data object as input and evaluates its type. Include evaluations for whether the data object is a string, a logical value, or numeric. You can use <code>is.character()</code>, <code>is.logical()</code> and <code>is.numeric()</code> to evaluate whether the data object corresponds to any of those types. The function should return a string that indicates the data type, i.e., <code>&quot;string&quot;</code>, <code>&quot;logical&quot;</code>, or <code>&quot;numeric&quot;</code>.</p>
 
 </article></slide><slide class=""><hgroup><h2>Wrapping Up</h2></hgroup><article  id="wrapping-up">
 
@@ -3451,11 +3468,10 @@ multiply_xy(2)</pre>
 <li>Another classification model.</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Exercise 15</h2></hgroup><article  id="exercise-15">
+</article></slide><slide class=""><hgroup><h2>Exercise 13</h2></hgroup><article  id="exercise-13">
 
 <ol>
-<li>Read the case and write how you might meet the expectations (no more than one page) in Quarto.</li>
-<li>In the same Quarto document, write a function for simulating data that uses conditional statements and a for loop. Call it and print the output.</li>
+<li>Write a function for simulating data that uses conditional statements and a for loop. Call it and print the output.</li>
 <li>Render the Quarto document into Word and upload to Canvas.</li>
 </ol></article></slide>
 

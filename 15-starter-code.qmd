@@ -1,0 +1,93 @@
+---
+title: "15-starter-code"
+format: docx
+editor: visual
+---
+
+## For Loops
+
+For loops are used to perform a task for each 'item' in a sequence.
+
+```{r}
+for (i in 1:10) {
+  print(i)
+}
+```
+
+For loops can also iterate over objects. For example, let's create an empty vector and fill it in with numbers.
+
+```{r}
+# create empty vector
+empty_vector <- vector(mode = "double", length = 7)
+
+# fill in the vector with numbers equal to 1 + the index
+for (i in seq_along(empty_vector)) {
+  empty_vector[i] <- 1 + i
+}
+
+empty_vector
+```
+
+Sometimes we will only want to perform an action if a condition is met. Conditional statements pair well with for loops to accomplish this.
+
+```{r}
+empty_vector <- vector(mode = "double", length = 7)
+
+for (i in seq_along(empty_vector)) {
+  if (i == 1) {
+    empty_vector[i] <- 1
+  } else {
+    empty_vector[i] <- sum(empty_vector[1:(i - 1)])
+  }
+}
+
+empty_vector
+```
+
+## Your Turn!
+
+Write a for-loop that fills in a vector of 10 values. Place a zero at every even index, and place the value of every odd index at its corresponding position in the vector.
+
+Hint: use the modulo `%%` to determine when an index is even. The modulo returns the remainder from dividing the number on its left by the number on its right.
+
+```{r}
+
+```
+
+Note that we can can condition on many possible values.
+
+```{r}
+empty_vector <- vector(mode = "double", length = 7)
+
+for (i in seq_along(empty_vector)) {
+  if (i == 1) {
+    empty_vector[i] <- 0
+  } else if (i == length(empty_vector)) {
+    empty_vector[i] <- 0
+  } else {
+    empty_vector[i] <- 1 + empty_vector[i - 1]
+  }
+}
+
+empty_vector
+```
+
+While a for loop is a powerful way to code an iteration and conditional statements give us even more flexibility, we might still need to copy and paste code to perform a task multiple times. In that case, we often want to use a **function**.
+
+```{r}
+multiply_xy <- function(x, y = 2) {
+  return(x * y)
+}
+
+multiply_xy(2)
+
+multiply_xy(x = 2, y = 4)
+```
+
+## Live Coding
+
+Write a function that takes a data object as input and evaluates its type. Include evaluations for whether the data object is a string, a logical value, or numeric. You can use `is.character()`, `is.logical()` and `is.numeric()` to evaluate whether the data object corresponds to any of those types. The function should return a string that indicates the data type, i.e., `"string"`, `"logical"`, or `"numeric"`.
+
+```{r}
+
+```

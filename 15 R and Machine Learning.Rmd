@@ -1,6 +1,6 @@
 ---
 title: "R and Machine Learning"
-subtitle: "MKTG 411 Marketing Analytics"
+subtitle: "MCB Consulting Group (MKTG 411)"
 output: 
   ioslides_presentation:
     widescreen: true
@@ -52,7 +52,7 @@ President Russell M. Nelson, April 2021 General Conference.
 
 ## So How Do We Manage Uncertainty?
 
-"Please know this: if everything and everyone else in the world whom you shold trust should fail, Jesus Christ and His Church will *never* fail you. The Lord never slumbers, nor does He sleep. He 'is the same yesterday, today, and [tomorrow].' He will not forsake His covenants, His promises, or His love for His people. He works miracles today, and He will work miracles tomorrow."
+"Please know this: if everything and everyone else in the world whom you should trust should fail, Jesus Christ and His Church will *never* fail you. The Lord never slumbers, nor does He sleep. He 'is the same yesterday, today, and [tomorrow].' He will not forsake His covenants, His promises, or His love for His people. He works miracles today, and He will work miracles tomorrow."
 
 President Russell M. Nelson, April 2021 General Conference.
 
@@ -76,14 +76,14 @@ How we model the data depends on if we care about *inference* or only about **pr
 - Predictive modeling may also be referred to as **machine learning** given its ties to computer science.
 - We use predictive models to accurately predict an outcome or cluster observations.
 
-While we can use inferential models to predict, predictive models are black boxes that *cannot* be used to understand the unobserved data generating process.
+While we can use inferential models to predict, predictive models are (often) black boxes that do not estimate coefficients that give us information about our story.
 
 ---
 
 There is substantial overlap between statistical modeling and machine learning.
 
 - *Regression* where the outcome is continuous often uses linear regression.
-- *Classification* where the outcome is binary often uses logistic "regression."
+- *Classification* where the outcome is binary often uses logistic regression.
 
 Both are examples of **supervised learning**, where there is an outcome variable to predict. We'll also explore **unsupervised learning**, where we group together predictors (a.k.a., explanatory variables) without an outcome.
 
@@ -149,11 +149,50 @@ Sometimes you want code to run only when certain conditions are met. To do this,
 
 ```{r}
 empty_vector <- vector(mode = "double", length = 7)
+
 for (i in seq_along(empty_vector)) {
   if (i == 1) {
     empty_vector[i] <- 1
   } else {
-    empty_vector[i] <- 1 + empty_vector[i - 1]
+    empty_vector[i] <- sum(empty_vector[1:(i - 1)])
+  }
+}
+
+empty_vector
+```
+
+## Your Turn!
+
+Write a for-loop that fills in a vector of 10 values. Place a zero at every even index, and place the value of every odd index at its corresponding position in the vector.
+
+Hint: use the modulo `%%` to determine when an index is even. The modulo returns the remainder from dividing the number on its left by the number on its right.
+
+## Desired Output
+
+```{r echo = FALSE}
+empty_vector <- vector(mode = "double", length = 10)
+
+for (i in seq_along(empty_vector)) {
+  if (i %% 2 == 0) {
+    empty_vector[i] <- 0
+  } else {
+    empty_vector[i] <- i
+  }
+}
+
+empty_vector
+```
+
+## Solution
+
+```{r eval = FALSE}
+empty_vector <- vector(mode = "double", length = 10)
+
+for (i in seq_along(empty_vector)) {
+  if (i %% 2 == 0) {
+    empty_vector[i] <- 0
+  } else {
+    empty_vector[i] <- i
   }
 }
 
@@ -162,7 +201,7 @@ empty_vector
 
 ---
 
-We can can condition on many possible values.
+Note that we can can condition on many possible values.
 
 ```{r}
 empty_vector <- vector(mode = "double", length = 7)
@@ -201,16 +240,13 @@ A few things to note:
 - Variables defined inside a function aren't *automatically* accessible outside and vice versa.
 - Remember to use `return()` to get back a specific output or object.
 
-## FAQ | How do I study for a class like this?
+## Live Coding
 
-1. Seek learning by study and faith (D&C 109:7).
-2. Prepare for class by previewing material and coming with questions.
-3. Actively code, take notes, and ask questions during class.
-4. Practice coding by completing exercises, referencing supplementary material as needed.
-5. Review exercise solutions and note where and why your work differs.
-6. Use the quizzes to gauge how well the material is understood.
-7. Work with classmates and utilize office hours.
-8. Download and organize all course materials, notes, and code.
+Write a function that takes a data object as input and evaluates its type. Include evaluations for whether the data object is a string, a logical value, or numeric. You can use `is.character()`, `is.logical()` and `is.numeric()` to evaluate whether the data object corresponds to any of those types. The function should return a string that indicates the data type, i.e., `"string"`, `"logical"`, or `"numeric"`.
+
+```{r}
+
+```
 
 ## Wrapping Up
 
@@ -225,9 +261,7 @@ A few things to note:
 
 - Another classification model.
 
-## Exercise 15
+## Exercise 13
 
-1. Read the case and write how you might meet the expectations (no more than one page) in Quarto.
-2. In the same Quarto document, write a function for simulating data that uses conditional statements and a for loop. Call it and print the output.
-3. Render the Quarto document into Word and upload to Canvas.
-
+1. Write a function for simulating data that uses conditional statements and a for loop. Call it and print the output.
+2. Render the Quarto document into Word and upload to Canvas.
