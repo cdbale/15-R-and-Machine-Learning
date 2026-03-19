@@ -44,16 +44,6 @@ for (i in seq_along(empty_vector)) {
 empty_vector
 ```
 
-## Your Turn!
-
-Write a for-loop that fills in a vector of 10 values. Place a zero at every even index, and place the value of every odd index at its corresponding position in the vector.
-
-Hint: use the modulo `%%` to determine when an index is even. The modulo returns the remainder from dividing the number on its left by the number on its right.
-
-```{r}
-
-```
-
 Note that we can can condition on many possible values.
 
 ```{r}

@@ -161,46 +161,6 @@ for (i in seq_along(empty_vector)) {
 empty_vector
 ```
 
-## Your Turn!
-
-Write a for-loop that fills in a vector of 10 values. Place a zero at every even index, and place the value of every odd index at its corresponding position in the vector.
-
-Hint: use the modulo `%%` to determine when an index is even. The modulo returns the remainder from dividing the number on its left by the number on its right.
-
-## Desired Output
-
-```{r echo = FALSE}
-empty_vector <- vector(mode = "double", length = 10)
-
-for (i in seq_along(empty_vector)) {
-  if (i %% 2 == 0) {
-    empty_vector[i] <- 0
-  } else {
-    empty_vector[i] <- i
-  }
-}
-
-empty_vector
-```
-
-## Solution
-
-```{r eval = FALSE}
-empty_vector <- vector(mode = "double", length = 10)
-
-for (i in seq_along(empty_vector)) {
-  if (i %% 2 == 0) {
-    empty_vector[i] <- 0
-  } else {
-    empty_vector[i] <- i
-  }
-}
-
-empty_vector
-```
-
----
-
 Note that we can can condition on many possible values.
 
 ```{r}
@@ -263,5 +223,5 @@ Write a function that takes a data object as input and evaluates its type. Inclu
 
 ## Exercise 13
 
-1. Write a function for simulating data that uses conditional statements and a for loop. Call it and print the output.
+1. Write a function for simulating data that uses conditional statements and a for loop. Call the function and print the output (the simulated data set).
 2. Render the Quarto document into Word and upload to Canvas.

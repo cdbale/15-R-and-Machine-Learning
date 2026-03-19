@@ -4,7 +4,7 @@ author: "Cameron Bale"
 format: docx
 ---
 
-1. Write a function for simulating data that uses conditional statements and a for loop. Call it and print the output.
+1. Write a function for simulating data that uses conditional statements and a for loop. Call the function and print the output (the simulated data set).
 2. Render the Quarto document into Word and upload to Canvas.
 
 **Five points total, one point each for:**
