@@ -1,0 +1,43 @@
+---
+title: "Exercise 8"
+format: docx
+---
+
+1. Respond to the following prompt (no more than 1 page):  
+*You’ve been hired by Roomba to improve their customer analytics efforts. You have access to a variety of data, including surveys and reviews. What variables might serve as explanatory and response variables? Describe how these insights could help Roomba make better marketing decisions.*
+2. In the same Quarto document, write a function that uses conditional statements and a for loop. Call it and print the output.
+3. Render the Quarto document into Word and upload to Canvas.
+
+**Five points total, one point each for:**
+
+- **Responding to the writing prompt.**
+- **Write a function.**
+- **Including conditional statements in your function.**
+- **Including a for loop in your function.**
+- **Submitting a rendered Word document.**
+
+## Meeting Expectations (Sample Response)
+
+For Roomba to improve their customer analytics efforts, they should focus on identifying key response variables—such as customer churn, customer lifetime value, or customer satisfaction scores. and then determine explanatory variables that might influence them. These could include purchase history, engagement data, customer demographics, and sentiment from reviews/surveys. By modeling these relationships, Roomba could better predict which customers are at risk of leaving, tailor promotions to high‑value segments, and use insights from review topics to improve products and marketing messages, leading to more targeted and effective marketing decisions.
+
+
+## Write a Function (Sample Response)
+
+```{r}
+check_numbers <- function(x) {
+  result <- c()
+  
+  for (i in x) {
+    if (i > 5) {
+      result <- c(result, i * 2)
+    } else {
+      result <- c(result, i)
+    }
+  }
+  
+  return(result)
+}
+
+check_numbers(c(3, 7, 5))
+```
+

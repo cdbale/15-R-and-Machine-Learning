@@ -1,0 +1,80 @@
+---
+title: "08 R and Machine Learning Starter Code"
+format: docx
+editor: visual
+---
+
+## Lecture 08 Notes
+
+### Iteration
+
+```{r}
+
+# This code is an example of a for loop.
+
+empty_vector <- vector(mode = "double", length = 7)
+for (i in seq_along(empty_vector)) {
+  empty_vector[i] <- 1 + i
+}
+
+empty_vector
+```
+
+### Your Turn!
+
+```{r}
+
+# USe this space to modify the for loop to return a vector of only zeros.
+```
+
+### Conditional Statements
+
+```{r}
+
+# This code is an example of a conditional statement.
+
+empty_vector <- vector(mode = "double", length = 7)
+for (i in seq_along(empty_vector)) {
+  if (i == 1) {
+    empty_vector[i] <- 1
+  } else {
+    empty_vector[i] <- 1 + empty_vector[i - 1]
+  }
+}
+
+empty_vector
+```
+
+```{r}
+
+# This conditional statement includes multiple possible values.
+
+empty_vector <- vector(mode = "double", length = 7)
+for (i in seq_along(empty_vector)) {
+  if (i == 1) {
+    empty_vector[i] <- 0
+  } else if (i == length(empty_vector)) {
+    empty_vector[i] <- 0
+  } else {
+    empty_vector[i] <- 1 + empty_vector[i - 1]
+  }
+}
+
+empty_vector
+
+```
+
+### Functions
+
+```{r}
+
+# This code creates a function that multiplies both arguments by 2.
+
+multiply_xy <- function(x, y = 2) {
+  return(x * y)
+}
+
+multiply_xy(2)
+
+multiply_xy(x = 2, y = 4)
+```
